@@ -1,23 +1,23 @@
-import { useContext } from "react";
-import { TodoContext } from "../context/ToDoContext";
+import { useState } from "react";
 
-const TodoItem = ({ text, isCompleted, id }) => {
-  const {
-    handleDelete,
-    handleChangeCheckbox,
-    handleEditTitle,
-    currentText,
-    setCurrentText,
-    mode,
-    setMode,
-    selectedId,
-    setSelectedId,
-  } = useContext(TodoContext);
-
+const TodoItem = ({
+  text,
+  isCompleted,
+  id,
+  handleChangeCheckbox,
+  handleEditTitle,
+  handleDelete,
+  currentText,
+  setCurrentText,
+  mode,
+  setMode,
+  selectedId,
+  setSelectedId
+}) => {
   return (
     <div style={{ display: "flex" }}>
       <input
-        type='checkbox'
+        type="checkbox"
         // defaultChecked={false}
         defaultChecked={isCompleted}
         id={id}
@@ -43,7 +43,8 @@ const TodoItem = ({ text, isCompleted, id }) => {
           onClick={() => {
             handleDelete(id);
           }}
-          style={{ border: "none" }}>
+          style={{ border: "none" }}
+        >
           삭제
         </button>
         {mode === "edit" && selectedId === id ? (
@@ -53,7 +54,8 @@ const TodoItem = ({ text, isCompleted, id }) => {
               setMode("write");
               setSelectedId(null);
             }}
-            style={{ border: "none" }}>
+            style={{ border: "none" }}
+          >
             확인
           </button>
         ) : (
@@ -63,7 +65,8 @@ const TodoItem = ({ text, isCompleted, id }) => {
               setCurrentText(text);
               setSelectedId(id);
             }}
-            style={{ border: "none" }}>
+            style={{ border: "none" }}
+          >
             수정
           </button>
         )}
